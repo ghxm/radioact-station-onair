@@ -4,9 +4,10 @@ import ruamel.yaml as yaml
 import urllib.request as urllib2
 import re
 import time
+import os
 
 config = configparser.ConfigParser()
-config.read('./config.ini')
+config.read(glob.glob(os.path.dirname(os.path.abspath(__file__)) + '/config.ini'))
 
 stations = glob.glob(config['DEFAULT']['stations_dir'] + "/*.md")
 

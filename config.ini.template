@@ -1,0 +1,5 @@
+[DEFAULT]
+
+stations_dir: ./_stations
+wait_between: 2
+wait_station: 10

@@ -34,7 +34,7 @@ def add_to_list(list, index, val):
 for station in stations:
     print(time.time())
     print('File: ' + station)
-    with open(station, "r+") as f:
+    with open(station, "r+", encoding="utf8") as f:
 
         file_string = f.read()
         yaml_string = re.search(r'^stream_url:(?:.)+?\n(?=^[a-z])', file_string, flags=re.DOTALL|re.MULTILINE)
@@ -55,7 +55,7 @@ for station in stations:
 
         file_string = file_string.replace(yaml_string, yaml_string_updated)
 
-    with open(station, "w") as f:
+    with open(station, "w", encoding="utf8") as f:
 
         f.write(file_string)
 

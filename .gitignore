@@ -144,3 +144,5 @@ cython_debug/
 config.ini
 
 .idea
+
+_stations

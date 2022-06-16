@@ -46,15 +46,16 @@ for station in stations:
             yaml_string = yaml_string[0]
         data = yaml.safe_load(yaml_string)
 
-        for i, stream in enumerate(data['stream_url']):
-            if onair(stream[1]):
-                list = add_to_list(stream, 2, 'online')
-            else:
-                list = add_to_list(stream, 2, 'offline')
-            data['stream_url'][i] = stream
-        yaml_string_updated = yaml.safe_dump(data, allow_unicode=True)
+        if 'stream_url' in data.keys() and data.get('stream_url') is not None:
+            for i, stream in enumerate(data['stream_url']):
+                if onair(stream[1]):
+                    list = add_to_list(stream, 2, 'online')
+                else:
+                    list = add_to_list(stream, 2, 'offline')
+                data['stream_url'][i] = stream
+            yaml_string_updated = yaml.safe_dump(data, allow_unicode=True)
 
-        file_string = file_string.replace(yaml_string, yaml_string_updated)
+            file_string = file_string.replace(yaml_string, yaml_string_updated)
 
     with open(station, "w", encoding="utf8") as f:
 
